@@ -15,7 +15,7 @@ class MaggieConnection(object):
         self.gc.GClose()
 
     def kick_handles_and_stop(self):
-        self.gc.GCommand('IH => -3')
+        self.gc.GCommand('IHT => -3')
         self.gc.GCommand('ST')
 
     def check_handle(self):
