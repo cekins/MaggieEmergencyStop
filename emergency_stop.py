@@ -9,6 +9,7 @@ class MaggieConnection(object):
 
     def __enter__(self):
         self.gc.GOpen('10.63.32.199 -d')
+        return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.gc.GClose()
