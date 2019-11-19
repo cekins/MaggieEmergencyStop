@@ -54,6 +54,14 @@ void buttonPressedISR() {
 }
 
 
+//------------------ Serial ---------------//
+void serialEvent() {
+  while (Serial.available() && Serial.read() == CONNECTED_BYTE) {
+    last_connection_time == millis();
+  }
+}
+
+
 //----------------- Main functions -----------------//
 void setup() {
   pinMode(button_pin, INPUT_PULLUP);
@@ -65,12 +73,6 @@ void setup() {
 }
 
 void loop() {
-  //Check for connection message
-  
-  if (Serial.available() && Serial.read() == CONNECTED_BYTE) {
-    last_connection_time = millis();
-  }
-
   //Set state based on connection time
   if (millis() < last_connection_time + 1000) {
     turnLedOn();
