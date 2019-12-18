@@ -39,7 +39,7 @@ with MaggieConnection() as mag:
                     ser.write(CONNECTION_BYTE)
                     last_connection_time = current_time
 
-            while ser.in_waiting:
+            while ser.inWaiting():
                 in_byte = ser.read()
                 if in_byte == 'S':
                     mag.kick_handles_and_stop()
